@@ -312,16 +312,16 @@
 
         // ➕ NUEVO: línea de servidores según tipo (Movies vs Series)
         const servidoresTexto = (tipo === 'movie')
-          ? '🖥️ *Servidor:* Byse - Películas'
-          : '🖥️ *Servidor:* Byse - Series';
+          ? '• *Servidor:* Byse, Moly - Películas'
+          : '• *Servidor:* Byse, Moly - Series';
 
         fichaDiv.textContent =
 `★★★ *${nombre} (${anio})* ★★★
 
-🎬 *Género:* ${generos}
-📽️ *Calidad:* HD
-🗣️ *Audio:* Latino
-📺 *Estado:* ${estado}
+• *Género:* ${generos}
+• *Calidad:* HD
+• *Audio:* Latino
+• *Estado:* ${estado}
 ${servidoresTexto}
 
 🎥 ¡Ya disponible en *SpayCine*!
