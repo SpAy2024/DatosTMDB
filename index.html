@@ -2,27 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Generador SpayNext Profesional</title>
+  <title>SpayNext Generator Pro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     /* Reset y base */
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0a0a;
+      background: #141414;
       color: #ffffff;
       min-height: 100vh;
       margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px;
+      padding: 40px 20px 60px;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Fondo animado */
+    /* Fondo animado estilo Netflix */
     body::before {
       content: '';
       position: fixed;
@@ -30,86 +30,214 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 50%, rgba(229, 9, 20, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 50%),
-                  radial-gradient(circle at 40% 80%, rgba(229, 9, 20, 0.03) 0%, transparent 50%);
-      z-index: -1;
-      animation: backgroundShift 20s ease-in-out infinite;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(229, 9, 20, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(229, 9, 20, 0.05) 0%, transparent 50%);
+      z-index: -2;
+      animation: backgroundPulse 15s ease-in-out infinite;
     }
 
-    @keyframes backgroundShift { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-
-    h1 {
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 3rem;
-      margin-bottom: 40px;
-      text-align: center;
-      letter-spacing: -0.02em;
-      position: relative;
-      max-width: 850px;
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      animation: fadeInUp 0.8s ease-out;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: -1;
+      opacity: 0.5;
     }
 
-    h1::after {
+    @keyframes backgroundPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* Header */
+    .header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, #e50914, #b20710);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      color: white;
+      box-shadow: 0 4px 20px rgba(229, 9, 20, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::after {
       content: '';
       position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #e50914, #ff6b6b);
-      border-radius: 2px;
-      animation: expandLine 1s ease-out 0.5s both;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 4s ease-in-out infinite;
     }
 
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
-    @keyframes expandLine { from { width: 0;} to { width: 60px;} }
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
 
-    .search-container { position: relative; max-width: 500px; width: 100%; margin-bottom: 40px; }
+    h1 {
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #e50914 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-badge {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-badge span {
+      color: #e50914;
+      font-weight: 600;
+    }
+
+    /* Search */
+    .search-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    .search-container {
+      position: relative;
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 1.2rem;
+      pointer-events: none;
+    }
 
     input {
       width: 100%;
-      padding: 20px 24px;
-      border-radius: 16px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      font-size: 1.1rem;
+      padding: 18px 24px 18px 54px;
+      border-radius: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      font-size: 1.05rem;
       font-weight: 400;
       background: rgba(255, 255, 255, 0.05);
       color: #ffffff;
       backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       outline: none;
       font-family: 'Inter', sans-serif;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     }
 
-    input::placeholder { color: rgba(255, 255, 255, 0.5); }
+    input::placeholder { 
+      color: rgba(255, 255, 255, 0.35);
+      font-weight: 300;
+    }
 
     input:focus {
       border-color: #e50914;
       background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 0 4px rgba(229, 9, 20, 0.1);
+      box-shadow: 0 8px 40px rgba(229, 9, 20, 0.15), inset 0 0 0 1px rgba(229, 9, 20, 0.2);
+      transform: scale(1.01);
     }
 
-    .botones { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; max-width: 850px; width: 100%; }
+    input:focus + .search-icon {
+      color: #e50914;
+    }
+
+    /* Actions Bar */
+    .actions-bar {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .results-count {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    .results-count strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .botones {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
     button {
-      background: linear-gradient(135deg, #e50914, #bf0810);
+      background: linear-gradient(135deg, #e50914, #b20710);
       border: none;
       color: white;
       font-weight: 600;
-      font-size: 1rem;
-      padding: 16px 32px;
-      border-radius: 12px;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
-      min-width: 160px;
       position: relative;
       overflow: hidden;
       font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(229, 9, 20, 0.25);
     }
 
     button::before {
@@ -119,93 +247,445 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      transition: left 0.6s ease;
     }
 
     button:hover::before { left: 100%; }
-    button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(229, 9, 20, 0.4); }
-    button:active { transform: translateY(0); }
+    button:hover { 
+      transform: translateY(-2px) scale(1.02); 
+      box-shadow: 0 8px 30px rgba(229, 9, 20, 0.4);
+    }
+    button:active { transform: translateY(0) scale(0.98); }
 
-    .resultados { max-width: 850px; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Resultados Grid */
+    .resultados {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
 
     .item {
-      display: flex;
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       user-select: none;
       backdrop-filter: blur(10px);
       position: relative;
+      transform: translateY(0);
     }
 
     .item::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(229, 9, 20, 0.1), transparent);
-      opacity: 0; transition: opacity 0.3s ease;
+      background: linear-gradient(135deg, rgba(229, 9, 20, 0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
     }
 
     .item:hover::before { opacity: 1; }
-    .item:hover { transform: translateY(-4px); border-color: rgba(229, 9, 20, 0.3); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3); }
+    .item:hover { 
+      transform: translateY(-8px); 
+      border-color: rgba(229, 9, 20, 0.3); 
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
 
-    .item img { width: 100px; height: 150px; object-fit: cover; flex-shrink: 0; position: relative; z-index: 1; }
+    .item-poster {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 1;
+      background: #1a1a1a;
+    }
 
-    .item-info { padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
-    .item-info h3 { margin: 0 0 8px; font-size: 1.3rem; font-weight: 600; color: #ffffff; line-height: 1.3; }
-    .item-info p { margin: 0; color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.4; max-width: 600px; user-select: text; }
+    .item-info {
+      padding: 20px 20px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .item-info h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .item-info .year {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .item-info p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      user-select: text;
+    }
+
+    .item-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(229, 9, 20, 0.9);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .item-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(229, 9, 20, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 2;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .item:hover .item-play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .item-play svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+      margin-left: 4px;
+    }
+
+    /* Ficha Técnica */
+    .ficha-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
 
     .ficha {
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      max-width: 850px; width: 100%;
-      border-radius: 20px; padding: 32px; margin-top: 40px;
-      white-space: pre-wrap; font-size: 1.05rem; line-height: 1.6; user-select: text;
-      backdrop-filter: blur(10px); min-height: 200px; font-family: 'Inter', sans-serif; position: relative; overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      border-radius: 20px;
+      padding: 40px 44px;
+      white-space: pre-wrap;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      user-select: text;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+      color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
     }
 
-    .ficha::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #e50914, #ff6b6b, #e50914); border-radius: 20px 20px 0 0; }
+    .ficha::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #e50914, #ff6b6b, #e50914);
+      background-size: 200% 100%;
+      animation: gradientMove 3s ease-in-out infinite;
+      border-radius: 20px 20px 0 0;
+    }
 
-    .copiado { margin-top: 20px; font-weight: 500; font-size: 0.95rem; color: #4caf50; min-height: 1.2em; user-select: none; max-width: 850px; width: 100%; text-align: center; animation: fadeIn 0.3s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+    @keyframes gradientMove {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
 
-    .loading { display: flex; justify-content: center; align-items: center; padding: 40px; color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; }
-    .loading::before { content: ''; width: 20px; height: 20px; border: 2px solid rgba(229, 9, 20, 0.3); border-top: 2px solid #e50914; border-radius: 50%; animation: spin 1s linear infinite; margin-right: 12px; }
-    @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
+    .ficha-empty {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.2);
+      padding: 60px 20px;
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    .ficha-empty span {
+      display: block;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    /* Mensajes */
+    .copiado {
+      margin-top: 16px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #4caf50;
+      min-height: 1.2em;
+      user-select: none;
+      width: 100%;
+      max-width: 1200px;
+      text-align: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .loading {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 1.1rem;
+      gap: 12px;
+    }
+
+    .loading::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(229, 9, 20, 0.2);
+      border-top: 3px solid #e50914;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    .no-results span {
+      display: block;
+      font-size: 4rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .resultados {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+    }
 
     @media (max-width: 768px) {
-      h1 { font-size: 2.2rem; }
-      .item { flex-direction: column; align-items: center; text-align: center; }
-      .item img { width: 140px; height: 210px; border-radius: 16px; margin: 16px 0 0 0; }
-      .item-info { padding: 16px 20px 24px; }
-      input { padding: 18px 20px; font-size: 1rem; }
-      button { padding: 14px 24px; min-width: 140px; }
+      body { padding: 20px 16px 40px; }
+      
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+
+      h1 { font-size: 1.5rem; }
+      .header-badge { font-size: 0.75rem; padding: 6px 14px; }
+
+      .actions-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .results-count { text-align: center; }
+
+      .botones {
+        justify-content: center;
+        width: 100%;
+      }
+
+      button {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        min-width: 120px;
+      }
+
+      .resultados {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+      }
+
+      .item-info h3 { font-size: 1rem; }
+      .item-info p { font-size: 0.8rem; -webkit-line-clamp: 2; }
+
+      .ficha {
+        padding: 28px 20px;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .item-play {
+        width: 45px;
+        height: 45px;
+      }
+      .item-play svg { width: 20px; height: 20px; }
     }
 
     @media (max-width: 480px) {
-      body { padding: 40px 16px; }
-      h1 { font-size: 1.8rem; }
-      .ficha { padding: 24px; font-size: 1rem; }
+      .resultados {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+      }
+
+      .item-info { padding: 14px 14px 18px; }
+      .item-info h3 { font-size: 0.9rem; }
+      
+      .ficha { padding: 20px 16px; font-size: 0.85rem; }
+      
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
+      h1 { font-size: 1.2rem; }
+    }
+
+    /* Scrollbar personalizado */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(229, 9, 20, 0.4);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(229, 9, 20, 0.6);
+    }
+
+    /* Animación de entrada */
+    .item {
+      animation: cardFadeIn 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    .item:nth-child(1) { animation-delay: 0.05s; }
+    .item:nth-child(2) { animation-delay: 0.1s; }
+    .item:nth-child(3) { animation-delay: 0.15s; }
+    .item:nth-child(4) { animation-delay: 0.2s; }
+    .item:nth-child(5) { animation-delay: 0.25s; }
+    .item:nth-child(6) { animation-delay: 0.3s; }
+    .item:nth-child(7) { animation-delay: 0.35s; }
+    .item:nth-child(8) { animation-delay: 0.4s; }
+
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <h1>🎬 SpayNext Generator</h1>
 
-  <div class="search-container">
-    <input type="text" id="busqueda" placeholder="Buscar película o serie..." autocomplete="off" spellcheck="false" />
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-container">
+      <div class="logo-icon">S</div>
+      <h1>SpayNext Pro</h1>
+    </div>
+    <div class="header-badge">
+      ⚡ <span>Premium</span> · Generador de Fichas
+    </div>
   </div>
 
-  <div class="botones">
-    <button id="btnCopiar">📋 Copiar Ficha Técnica</button>
+  <!-- Search -->
+  <div class="search-wrapper">
+    <div class="search-container">
+      <input type="text" id="busqueda" placeholder="Buscar película o serie..." autocomplete="off" spellcheck="false" />
+      <div class="search-icon">🔍</div>
+    </div>
   </div>
 
+  <!-- Actions -->
+  <div class="actions-bar">
+    <div class="results-count" id="resultsCount">🎬 <strong>0</strong> resultados</div>
+    <div class="botones">
+      <button id="btnCopiar" class="btn-secondary">📋 Copiar Ficha</button>
+    </div>
+  </div>
+
+  <!-- Resultados -->
   <div class="resultados" id="listaResultados"></div>
-  <pre class="ficha" id="ficha"></pre>
+
+  <!-- Ficha Técnica -->
+  <div class="ficha-wrapper">
+    <div class="ficha" id="ficha">
+      <div class="ficha-empty">
+        <span>🎬</span>
+        Selecciona una película o serie para ver su ficha técnica
+      </div>
+    </div>
+  </div>
+
   <div class="copiado" id="mensajeCopiado"></div>
 
   <script>
@@ -215,17 +695,20 @@
     const fichaDiv = document.getElementById('ficha');
     const mensajeCopiado = document.getElementById('mensajeCopiado');
     const btnCopiar = document.getElementById('btnCopiar');
+    const resultsCount = document.getElementById('resultsCount');
     let timeout;
 
     busqueda.addEventListener('input', () => {
       clearTimeout(timeout);
       const query = busqueda.value.trim();
       if (query.length >= 2) {
-        resultadosDiv.innerHTML = '<div class="loading">Buscando...</div>';
+        resultadosDiv.innerHTML = '<div class="loading">Buscando en el catálogo...</div>';
+        resultsCount.innerHTML = '🎬 <strong>...</strong> buscando';
         timeout = setTimeout(() => buscar(query), 400);
       } else {
         resultadosDiv.innerHTML = '';
-        fichaDiv.textContent = '';
+        resultsCount.innerHTML = '🎬 <strong>0</strong> resultados';
+        fichaDiv.innerHTML = `<div class="ficha-empty"><span>🎬</span>Selecciona una película o serie para ver su ficha técnica</div>`;
         mensajeCopiado.textContent = '';
       }
     });
@@ -246,26 +729,31 @@
         dataMovie.results.forEach(item => resultados.push({ ...item, media_type: 'movie' }));
         mostrarResultados(resultados);
       } catch (error) {
-        resultadosDiv.innerHTML = `<div style="text-align: center; padding: 40px; color: #f44336; font-size: 1.1rem;">Error: ${error.message}</div>`;
+        resultadosDiv.innerHTML = `<div class="no-results"><span>⚠️</span>Error: ${error.message}</div>`;
+        resultsCount.innerHTML = '🎬 <strong>0</strong> resultados';
         console.error('Error al buscar en TMDb:', error);
       }
     }
 
     function mostrarResultados(items) {
       resultadosDiv.innerHTML = '';
-      fichaDiv.textContent = '';
+      fichaDiv.innerHTML = `<div class="ficha-empty"><span>🎬</span>Selecciona una película o serie para ver su ficha técnica</div>`;
       mensajeCopiado.textContent = '';
 
       if (items.length === 0) {
-        resultadosDiv.innerHTML = '<div style="text-align: center; padding: 40px; color: rgba(255, 255, 255, 0.6); font-size: 1.1rem;">No se encontraron resultados</div>';
+        resultadosDiv.innerHTML = `<div class="no-results"><span>🔍</span>No se encontraron resultados para tu búsqueda</div>`;
+        resultsCount.innerHTML = '🎬 <strong>0</strong> resultados';
         return;
       }
+
+      resultsCount.innerHTML = `🎬 <strong>${items.length}</strong> resultados`;
 
       items.forEach(item => {
         const nombre = item.name || item.title;
         const fecha = (item.first_air_date || item.release_date || '').substring(0, 4) || '---';
         const desc = item.overview ? item.overview.substring(0, 130) + (item.overview.length > 130 ? '...' : '') : 'Sin descripción disponible.';
-        const poster = item.poster_path ? `https://image.tmdb.org/t/p/w300${item.poster_path}` : 'https://via.placeholder.com/100x150/1a1a1a/666666?text=No+Image';
+        const poster = item.poster_path ? `https://image.tmdb.org/t/p/w342${item.poster_path}` : 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="342" height="513" viewBox="0 0 342 513"%3E%3Crect width="342" height="513" fill="%231a1a1a"/%3E%3Ctext x="171" y="256" text-anchor="middle" fill="%23666666" font-size="40" font-family="Arial"%3E🎬%3C/text%3E%3C/svg%3E';
+        const tipo = item.media_type === 'tv' ? 'SERIE' : 'PELÍCULA';
 
         const div = document.createElement('div');
         div.className = 'item';
@@ -273,12 +761,19 @@
         div.setAttribute('role', 'button');
         div.setAttribute('aria-label', `${nombre}, ${fecha}`);
         div.onclick = () => seleccionarItem(item);
-        div.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') seleccionarItem(item); };
+        div.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); seleccionarItem(item); } };
 
         div.innerHTML = `
-          <img src="${poster}" alt="Poster de ${nombre}">
+          <div style="position:relative;">
+            <img class="item-poster" src="${poster}" alt="Poster de ${nombre}" loading="lazy" />
+            <span class="item-badge">${tipo}</span>
+            <div class="item-play">
+              <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+            </div>
+          </div>
           <div class="item-info">
-            <h3>${nombre} ${fecha !== '---' ? `(${fecha})` : ''}</h3>
+            <h3>${nombre}</h3>
+            <span class="year">${fecha !== '---' ? fecha : 'Próximamente'}</span>
             <p>${desc}</p>
           </div>
         `;
@@ -289,6 +784,7 @@
     async function seleccionarItem(item) {
       busqueda.value = '';
       resultadosDiv.innerHTML = '';
+      resultsCount.innerHTML = '🎬 <strong>0</strong> resultados';
       mensajeCopiado.textContent = '';
 
       try {
@@ -306,47 +802,49 @@
         const nombre = data.name || data.title || 'Sin título';
         const anio = (data.first_air_date || data.release_date || '').substring(0, 4) || '----';
         const sinopsis = data.overview || 'Sinopsis no disponible.';
-        const generos = data.genres && data.genres.length ? data.genres.map(g => g.name).join(' | ') : 'Desconocido';
+        const generos = data.genres && data.genres.length ? data.genres.map(g => g.name).join(' · ') : 'Desconocido';
         const estado = (data.status === 'Ended' || data.status === 'Released') ? 'Finalizada' : 'En emisión';
         const posterURL = data.backdrop_path ? `https://image.tmdb.org/t/p/w780${data.backdrop_path}` : '';
 
-        // ➕ NUEVO: línea de servidores según tipo (Movies vs Series)
         const servidoresTexto = (tipo === 'movie')
-          ? '• *Servidor:* SpayCine HD - Dood HD - Películas'
-          : '• *Servidor:* SpayCine HD - Dood HD, Moly - Series';
+          ? '• *Servidor:* SpayCine HD · Dood HD · Películas'
+          : '• *Servidor:* SpayCine HD · Dood HD · Moly · Series';
 
-        fichaDiv.textContent =
-`★★★ *${nombre} (${anio})* ★★★
+        fichaDiv.innerHTML = `
+<pre style="margin:0;font-family:inherit;white-space:pre-wrap;word-wrap:break-word;background:transparent;border:none;padding:0;color:rgba(255,255,255,0.9);">
+★★★ <strong>${nombre} (${anio})</strong> ★★★
 
-• *Género:* ${generos}
-• *Calidad:* HD
-• *Audio:* Latino
-• *Estado:* ${estado}
+• <strong>Género:</strong> ${generos}
+• <strong>Calidad:</strong> HD
+• <strong>Audio:</strong> Latino
+• <strong>Estado:</strong> ${estado}
 ${servidoresTexto}
 
-🎥 ¡Ya disponible en *SpayCine*!
+🎥 ¡Ya disponible en <strong>SpayCine</strong>!
 ⬇️ Descargar App: https://spay2024.github.io/Spaynext/
-⭐ Quitar Anuncios: https://spay2024.github.io/SpayCinePremiun/`;
-
+⭐ Quitar Anuncios: https://spay2024.github.io/SpayCinePremiun/
+</pre>
+        `;
 
       } catch (error) {
-        fichaDiv.textContent = '❌ Error al cargar información detallada.';
+        fichaDiv.innerHTML = `<div style="padding:20px;color:#f44336;">❌ Error al cargar información detallada.</div>`;
         console.error('Error al obtener detalles:', error);
       }
     }
 
     btnCopiar.addEventListener('click', () => {
-      if (!fichaDiv.textContent || fichaDiv.textContent.length < 10) return;
+      const content = fichaDiv.textContent || fichaDiv.innerText;
+      if (!content || content.length < 10 || content.includes('Selecciona una película')) return;
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(fichaDiv.textContent)
+        navigator.clipboard.writeText(content)
           .then(() => {
             mensajeCopiado.textContent = "✅ Ficha copiada al portapapeles";
             setTimeout(() => mensajeCopiado.textContent = '', 3000);
           })
-          .catch(() => fallbackCopyText(fichaDiv.textContent));
+          .catch(() => fallbackCopyText(content));
       } else {
-        fallbackCopyText(fichaDiv.textContent);
+        fallbackCopyText(content);
       }
     });
 
@@ -372,6 +870,15 @@ ${servidoresTexto}
         mensajeCopiado.textContent = "❌ Error al copiar.";
       }
     }
+
+    // Atajo de teclado: Ctrl+K para enfocar búsqueda
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        busqueda.focus();
+        busqueda.select();
+      }
+    });
   </script>
 </body>
 </html>
